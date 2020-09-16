@@ -106,7 +106,7 @@ def ner_predict_service():
             start = datetime.now()
             if len(sentence) < 2:
                 print(sentence)
-                result['data'] = ['O'] * len(sentence)
+                result['NERdata'] = ['O'] * len(sentence)
                 return json.dumps(result)
             sentence = tokenizer.tokenize(sentence)
             # print('your input is:{}'.format(sentence))
@@ -120,12 +120,12 @@ def ner_predict_service():
             pred_label_result = convert_id_to_label(pred_ids_result, id2label)
             print(pred_label_result)
             #todo: 组合策略
-            result['data'] = pred_label_result
+            result['NERdata'] = pred_label_result
             print('time used: {} sec'.format((datetime.now() - start).total_seconds()))
             return json.dumps(result)
         except:
             result['code'] = -1
-            result['data'] = 'error'
+            result['NERdata'] = 'error'
             return json.dumps(result)
 
 def online_predict():

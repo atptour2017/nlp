@@ -16,16 +16,16 @@ def get_args_parser():
     from .bert_lstm_ner import __version__
     parser = argparse.ArgumentParser()
     if os.name == 'nt':
-        bert_path = 'F:\chinese_L-12_H-768_A-12'
-        root_path = r'C:\workspace\python\BERT-BiLSTM-CRF-NER'
+        bert_path = 'F:\\nlp_share\\nlp\\bert\BERT-BiLSTM-CRF-NER\chinese_L-12_H-768_A-12'
+        root_path = r'F:\nlp_share\nlp\bert\BERT-BiLSTM-CRF-NER'
     else:
-        bert_path = '/home/macan/ml/data/chinese_L-12_H-768_A-12/'
+        bert_path = '/home/macan/ml/NERdata/chinese_L-12_H-768_A-12/'
         root_path = '/home/macan/ml/workspace/BERT-BiLSTM-CRF-NER'
 
     group1 = parser.add_argument_group('File Paths',
                                        'config the path, checkpoint and filename of a pretrained/fine-tuned BERT model')
     group1.add_argument('-data_dir', type=str, default=os.path.join(root_path, 'NERdata'),
-                        help='train, dev and test data dir')
+                        help='train, dev and test NERdata dir')
     group1.add_argument('-bert_config_file', type=str, default=os.path.join(bert_path, 'bert_config.json'))
     group1.add_argument('-output_dir', type=str, default=os.path.join(root_path, 'output'),
                         help='directory of a pretrained BERT model')

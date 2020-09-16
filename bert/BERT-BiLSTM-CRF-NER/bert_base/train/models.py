@@ -36,7 +36,7 @@ class InputExample(object):
         self.label = label
 
 class InputFeatures(object):
-    """A single set of features of data."""
+    """A single set of features of NERdata."""
 
     def __init__(self, input_ids, input_mask, segment_ids, label_ids, ):
         self.input_ids = input_ids
@@ -47,7 +47,7 @@ class InputFeatures(object):
 
 
 class DataProcessor(object):
-    """Base class for data converters for sequence classification data sets."""
+    """Base class for NERdata converters for sequence classification NERdata sets."""
 
     def get_train_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the train set."""
@@ -58,7 +58,7 @@ class DataProcessor(object):
         raise NotImplementedError()
 
     def get_labels(self):
-        """Gets the list of labels for this data set."""
+        """Gets the list of labels for this NERdata set."""
         raise NotImplementedError()
 
 

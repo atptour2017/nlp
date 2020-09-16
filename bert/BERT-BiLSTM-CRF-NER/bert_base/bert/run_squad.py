@@ -142,7 +142,7 @@ flags.DEFINE_integer(
 
 flags.DEFINE_bool(
     "verbose_logging", False,
-    "If true, all of the warnings related to data processing will be printed. "
+    "If true, all of the warnings related to NERdata processing will be printed. "
     "A number of warnings are expected for a normal SQuAD evaluation.")
 
 flags.DEFINE_bool(
@@ -195,7 +195,7 @@ class SquadExample(object):
 
 
 class InputFeatures(object):
-  """A single set of features of data."""
+  """A single set of features of NERdata."""
 
   def __init__(self,
                unique_id,
@@ -227,7 +227,7 @@ class InputFeatures(object):
 def read_squad_examples(input_file, is_training):
   """Read a SQuAD json file into a list of SquadExample."""
   with tf.gfile.Open(input_file, "r") as reader:
-    input_data = json.load(reader)["data"]
+    input_data = json.load(reader)["NERdata"]
 
   def is_whitespace(c):
     if c == " " or c == "\t" or c == "\r" or c == "\n" or ord(c) == 0x202F:
@@ -309,7 +309,7 @@ def read_squad_examples(input_file, is_training):
 def convert_examples_to_features(examples, tokenizer, max_seq_length,
                                  doc_stride, max_query_length, is_training,
                                  output_fn):
-  """Loads a data file into a list of `InputBatch`s."""
+  """Loads a NERdata file into a list of `InputBatch`s."""
 
   unique_id = 1000000000
 
@@ -926,7 +926,7 @@ def write_predictions(all_examples, all_features, all_results, n_best_size,
 def get_final_text(pred_text, orig_text, do_lower_case):
   """Project the tokenized prediction back to the original text."""
 
-  # When we created the data, we kept track of the alignment between original
+  # When we created the NERdata, we kept track of the alignment between original
   # (whitespace tokenized) tokens and our WordPiece tokenized tokens. So
   # now `orig_text` contains the span of our original text corresponding to the
   # span that we predicted.

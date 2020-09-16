@@ -50,12 +50,12 @@ flags.DEFINE_integer(
     "max_seq_length", 128,
     "The maximum total input sequence length after WordPiece tokenization. "
     "Sequences longer than this will be truncated, and sequences shorter "
-    "than this will be padded. Must match data generation.")
+    "than this will be padded. Must match NERdata generation.")
 
 flags.DEFINE_integer(
     "max_predictions_per_seq", 20,
     "Maximum number of masked LM predictions per sequence. "
-    "Must match data generation.")
+    "Must match NERdata generation.")
 
 flags.DEFINE_bool("do_train", False, "Whether to run training.")
 

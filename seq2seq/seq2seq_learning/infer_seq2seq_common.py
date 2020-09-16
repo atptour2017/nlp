@@ -17,7 +17,7 @@ target_vocab_dir = './data_mt/target_vocab.txt'
 model_path = './checkpoint/common/model.ckpt'
 
 if __name__ == '__main__':
-    print('load data...')
+    print('load NERdata...')
     source_word2id, source_id2word = word_to_id(source_vocab_dir)
     target_word2id, target_id2word = word_to_id(target_vocab_dir)
 

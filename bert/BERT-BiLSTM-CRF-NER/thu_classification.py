@@ -29,15 +29,15 @@ if os.name == 'nt':
     bert_path = 'C:\迅雷下载\chinese_L-12_H-768_A-12'
     root_path = r'C:\workspace\python\BERT_Base'
 else:
-    bert_path = '/home/macan/ml/data/chinese_L-12_H-768_A-12'
+    bert_path = '/home/macan/ml/NERdata/chinese_L-12_H-768_A-12'
     root_path = '/home/macan/ml/workspace/BERT_Base2'
 
 flags = tf.flags
 FLAGS = flags.FLAGS
 
 ## Required parameters
-flags.DEFINE_string("data_dir",  os.path.join(os.path.join(root_path, 'data'), 'classification'),
-                    "The input data dir. Should contain the .tsv files (or other data files) for the task.")
+flags.DEFINE_string("data_dir",  os.path.join(os.path.join(root_path, 'NERdata'), 'classification'),
+                    "The input NERdata dir. Should contain the .tsv files (or other NERdata files) for the task.")
 
 flags.DEFINE_string(
     "bert_config_file", os.path.join(bert_path, 'bert_config.json'),
@@ -139,7 +139,7 @@ class InputExample(object):
 
 
 class InputFeatures(object):
-    """A single set of features of data."""
+    """A single set of features of NERdata."""
 
     def __init__(self, input_ids, input_mask, segment_ids, label_id):
         self.input_ids = input_ids
@@ -149,7 +149,7 @@ class InputFeatures(object):
 
 
 class DataProcessor(object):
-    """Base class for data converters for sequence classification data sets."""
+    """Base class for NERdata converters for sequence classification NERdata sets."""
 
     def get_train_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the train set."""
@@ -164,7 +164,7 @@ class DataProcessor(object):
         raise NotImplementedError()
 
     def get_labels(self):
-        """Gets the list of labels for this data set."""
+        """Gets the list of labels for this NERdata set."""
         raise NotImplementedError()
 
     @classmethod
@@ -184,7 +184,7 @@ class DataProcessor(object):
 
 
 class ThuProcessor(DataProcessor):
-    """Processor for the Thu data set."""
+    """Processor for the Thu NERdata set."""
 
     def __init__(self):
         self.labels = set()
@@ -363,7 +363,7 @@ def file_based_input_fn_builder(input_file, seq_length, num_label, is_training, 
             d = d.repeat()
             d = d.shuffle(buffer_size=200)
 
-        # tf.data.experimental.map_and_batch will be deprecated, the replace methods like bellow
+        # tf.NERdata.experimental.map_and_batch will be deprecated, the replace methods like bellow
         d = d.apply(tf.contrib.data.map_and_batch(
             lambda record: _decode_record(record, name_to_features),
             batch_size=batch_size,

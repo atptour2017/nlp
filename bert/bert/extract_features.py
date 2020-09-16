@@ -87,7 +87,7 @@ class InputExample(object):
 
 
 class InputFeatures(object):
-  """A single set of features of data."""
+  """A single set of features of NERdata."""
 
   def __init__(self, unique_id, tokens, input_ids, input_mask, input_type_ids):
     self.unique_id = unique_id
@@ -117,9 +117,9 @@ def input_fn_builder(features, seq_length):
 
     num_examples = len(features)
 
-    # This is for demo purposes and does NOT scale to large data sets. We do
+    # This is for demo purposes and does NOT scale to large NERdata sets. We do
     # not use Dataset.from_generator() because that uses tf.py_func which is
-    # not TPU compatible. The right way to load data is with TFRecordReader.
+    # not TPU compatible. The right way to load NERdata is with TFRecordReader.
     d = tf.data.Dataset.from_tensor_slices({
         "unique_ids":
             tf.constant(all_unique_ids, shape=[num_examples], dtype=tf.int32),
@@ -208,7 +208,7 @@ def model_fn_builder(bert_config, init_checkpoint, layer_indexes, use_tpu,
 
 
 def convert_examples_to_features(examples, seq_length, tokenizer):
-  """Loads a data file into a list of `InputBatch`s."""
+  """Loads a NERdata file into a list of `InputBatch`s."""
 
   features = []
   for (ex_index, example) in enumerate(examples):

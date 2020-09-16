@@ -86,7 +86,7 @@ def get_batch(docs_source, w2i_source, docs_target, w2i_target, batch_size):
 	
 if __name__ == "__main__":
 
-	print("(1)load data......")
+	print("(1)load NERdata......")
 	docs_source, docs_target = load_data("")
 	w2i_source, i2w_source = make_vocab(docs_source)
 	w2i_target, i2w_target = make_vocab(docs_target)

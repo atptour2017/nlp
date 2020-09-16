@@ -65,7 +65,7 @@ class BertClient(object):
         :type port: int
         :type ip: str
         :param ip: the ip address of the server
-        :param port: port for pushing data from client to server, must be consistent with the server side config
+        :param port: port for pushing NERdata from client to server, must be consistent with the server side config
         :param port_out: port for publishing results from server to client, must be consistent with the server side config
         :param output_fmt: the output format of the sentence encodes, either in numpy array or python List[List[float]] (ndarray/list)
         :param show_server_config: whether to show server configs when first connected
@@ -199,7 +199,7 @@ class BertClient(object):
                 t_e = TimeoutError(
                     'no response from the server (with "timeout"=%d ms), please check the following:'
                     'is the server still online? is the network broken? are "port" and "port_out" correct? '
-                    'are you encoding a huge amount of data whereas the timeout is too small for that?' % self.timeout)
+                    'are you encoding a huge amount of NERdata whereas the timeout is too small for that?' % self.timeout)
                 if _py2:
                     raise t_e
                 else:

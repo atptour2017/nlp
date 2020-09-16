@@ -33,7 +33,7 @@ FLAGS = flags.FLAGS
 ## Required parameters
 flags.DEFINE_string(
     "data_dir", None,
-    "The input data dir. Should contain the .tsv files (or other data files) "
+    "The input NERdata dir. Should contain the .tsv files (or other NERdata files) "
     "for the task.")
 
 flags.DEFINE_string(
@@ -146,7 +146,7 @@ class InputExample(object):
 
 
 class InputFeatures(object):
-  """A single set of features of data."""
+  """A single set of features of NERdata."""
 
   def __init__(self, input_ids, input_mask, segment_ids, label_id):
     self.input_ids = input_ids
@@ -156,7 +156,7 @@ class InputFeatures(object):
 
 
 class DataProcessor(object):
-  """Base class for data converters for sequence classification data sets."""
+  """Base class for NERdata converters for sequence classification NERdata sets."""
 
   def get_train_examples(self, data_dir):
     """Gets a collection of `InputExample`s for the train set."""
@@ -171,7 +171,7 @@ class DataProcessor(object):
     raise NotImplementedError()
 
   def get_labels(self):
-    """Gets the list of labels for this data set."""
+    """Gets the list of labels for this NERdata set."""
     raise NotImplementedError()
 
   @classmethod
@@ -186,7 +186,7 @@ class DataProcessor(object):
 
 
 class XnliProcessor(DataProcessor):
-  """Processor for the XNLI data set."""
+  """Processor for the XNLI NERdata set."""
 
   def __init__(self):
     self.language = "zh"
@@ -234,7 +234,7 @@ class XnliProcessor(DataProcessor):
 
 
 class MnliProcessor(DataProcessor):
-  """Processor for the MultiNLI data set (GLUE version)."""
+  """Processor for the MultiNLI NERdata set (GLUE version)."""
 
   def get_train_examples(self, data_dir):
     """See base class."""
@@ -275,7 +275,7 @@ class MnliProcessor(DataProcessor):
 
 
 class MrpcProcessor(DataProcessor):
-  """Processor for the MRPC data set (GLUE version)."""
+  """Processor for the MRPC NERdata set (GLUE version)."""
 
   def get_train_examples(self, data_dir):
     """See base class."""
@@ -315,7 +315,7 @@ class MrpcProcessor(DataProcessor):
 
 
 class ColaProcessor(DataProcessor):
-  """Processor for the CoLA data set (GLUE version)."""
+  """Processor for the CoLA NERdata set (GLUE version)."""
 
   def get_train_examples(self, data_dir):
     """See base class."""
@@ -688,9 +688,9 @@ def input_fn_builder(features, seq_length, is_training, drop_remainder):
 
     num_examples = len(features)
 
-    # This is for demo purposes and does NOT scale to large data sets. We do
+    # This is for demo purposes and does NOT scale to large NERdata sets. We do
     # not use Dataset.from_generator() because that uses tf.py_func which is
-    # not TPU compatible. The right way to load data is with TFRecordReader.
+    # not TPU compatible. The right way to load NERdata is with TFRecordReader.
     d = tf.data.Dataset.from_tensor_slices({
         "input_ids":
             tf.constant(

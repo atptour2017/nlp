@@ -18,7 +18,8 @@ import numpy as np
 import tensorflow as tf
 import codecs
 import pickle
-
+import sys
+sys.path.append('../..')
 from bert_base.train import tf_metrics
 from bert_base.bert import modeling
 from bert_base.bert import optimization
@@ -38,7 +39,7 @@ __all__ = ['__version__', 'DataProcessor', 'NerProcessor', 'write_tokens', 'conv
 logger = set_logger('NER Training')
 
 class DataProcessor(object):
-    """Base class for data converters for sequence classification data sets."""
+    """Base class for NERdata converters for sequence classification NERdata sets."""
 
     def get_train_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the train set."""
@@ -49,12 +50,12 @@ class DataProcessor(object):
         raise NotImplementedError()
 
     def get_labels(self):
-        """Gets the list of labels for this data set."""
+        """Gets the list of labels for this NERdata set."""
         raise NotImplementedError()
 
     @classmethod
     def _read_data(cls, input_file):
-        """Reads a BIO data."""
+        """Reads a BIO NERdata."""
         with codecs.open(input_file, 'r', encoding='utf-8') as f:
             lines = []
             words = []
@@ -137,7 +138,7 @@ class NerProcessor(DataProcessor):
         return examples
 
     def _read_data(self, input_file):
-        """Reads a BIO data."""
+        """Reads a BIO NERdata."""
         with codecs.open(input_file, 'r', encoding='utf-8') as f:
             lines = []
             words = []
@@ -516,7 +517,7 @@ def train(args):
                 del_file(args.output_dir)
             except Exception as e:
                 print(e)
-                print('pleace remove the files of output dir and data.conf')
+                print('pleace remove the files of output dir and NERdata.conf')
                 exit(-1)
 
     #check output dir exists
@@ -552,7 +553,7 @@ def train(args):
         num_train_steps = int(
             len(train_examples) *1.0 / args.batch_size * args.num_train_epochs)
         if num_train_steps < 1:
-            raise AttributeError('training data is so small...')
+            raise AttributeError('training NERdata is so small...')
         num_warmup_steps = int(num_train_steps * args.warmup_proportion)
 
         logger.info("***** Running training *****")

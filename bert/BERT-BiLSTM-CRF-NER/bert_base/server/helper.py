@@ -105,7 +105,7 @@ def get_args_parser():
     group3 = parser.add_argument_group('Serving Configs',
                                        'config how server utilizes GPU/CPU resources')
     group3.add_argument('-port', '-port_in', '-port_data', type=int, default=5555,
-                        help='server port for receiving data from client')
+                        help='server port for receiving NERdata from client')
     group3.add_argument('-port_out', '-port_result', type=int, default=5556,
                         help='server port for sending result to client')
     group3.add_argument('-http_port', type=int, default=None,
