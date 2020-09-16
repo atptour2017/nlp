@@ -4,3 +4,6 @@ https://zhuanlan.zhihu.com/c_1131882304422936576
 
 NLP 自然语言处理的一般处理流程
 https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_10114035266322626107%22%7D&n_type=1&p_from=3
+
+零基础入门深度学习(5) - 循环神经网络
+https://zybuluo.com/hanbingtao/note/541458
